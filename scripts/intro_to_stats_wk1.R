@@ -50,3 +50,10 @@ difference_summary
 
 difference_summary %>% #mutate difference_summary to calculate SE
   mutate(se= sd/sqrt(n))
+
+lowerCI <- 2.62-(2*1.22) # confidence intervals
+
+upperCI <- 2.62+(2*1.22)
+
+lowerCI
+upperCI
