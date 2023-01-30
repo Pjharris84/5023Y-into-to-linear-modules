@@ -36,3 +36,17 @@ darwin_summary %>%
 darwin_summary %>% 
   kbl(caption="Summary statistics of crossed and selfed maize plants") %>% 
   kable_styling(bootstrap_options = "striped", full_width = T, position = "left")
+
+darwin_wide <- darwin %>% 
+  pivot_wider(names_from = type, values_from = height) %>% 
+  mutate(difference = Cross - Self)
+
+difference_summary <- darwin_wide %>% 
+  summarise(mean=mean(difference),
+            sd=sd(difference),
+            n=n())
+
+difference_summary
+
+difference_summary %>% #mutate difference_summary to calculate SE
+  mutate(se= sd/sqrt(n))
